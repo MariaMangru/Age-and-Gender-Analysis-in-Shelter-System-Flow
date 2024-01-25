@@ -11,8 +11,6 @@
 #### Workspace setup ####
 install.packages("opendatatoronto")
 install.packages("dplyr")
-library(opendatatoronto)
-library(dplyr)
 
 
 #### Download Data ####

@@ -1,20 +1,22 @@
 ---
-title: "Shelter System Flow Analysis"
+title: "Age and Gender Analysis in Shelter System Flow"
 author: "Maria Mangru"
 date: "`r format(Sys.Date(), '%B %d, %Y')`" 
 format: pdf
+bibliography: references.bib
 ---
 
 # Abstract
 
-This research project provides a thorough investigation of Toronto's actively homeless population, offering important additional knowledge about the demographics of this population. According to my investigation, the age range of 25–44 accounts for the greatest percentage of those who are homeless, or about 39.36% of the total, while the 45–64 age group accounts for 30.03%. Gender distribution shows that men make up 61.86% of the population, women 36.73%, and people who identify as transgender, non-binary, or two-spirit make up approximately 1.41%.These statistics underscore the critical need for targeted interventions and support services addressing the specific needs of these demographic groups within the homeless community.
+This research project provides an investigation of Toronto's actively homeless population, offering additional knowledge about the demographics of this population. According to my investigation, the age range of 25–44 accounts for the greatest percentage of those who are homeless, or about 39.36% of the total, while the 45–64 age group accounts for 30.03%. Gender distribution shows that men make up 61.86% of the population, women 36.73%, and people who identify as transgender, non-binary, or two-spirit make up approximately 1.41%.These statistics show the critical need for targeted interventions and support services addressing the specific needs of these demographic groups within the homeless community.
 
 # Introduction
-Homelessness is a complex problem that poses significant challenges for people, communities, and legislators. This research aims to investigate the complexities of this problem by focusing on how age and gender affect homelessness in urban areas specifically Toronto. Through the analysis of data from the Shelter System Flow dataset, which is derived from the Shelter Management Information System (SMIS) of the City of Toronto, this study seeks to offer a more comprehensive grasp of the demographic patterns within the homeless population as well as the particular difficulties encountered by various groups.
 
-Toronto's approach to homelessness, characterized by a range of services including emergency shelters and respites, reflects the city's commitment to addressing this complex social problem. However, the persistence and evolving nature of homelessness necessitate a continuous examination of the underlying factors. The aim of this paper is to determine how age and gender affect homelessness in Toronto, providing a data-driven perspective on the distribution and dynamics of homelessness among different demographic groups. 
+Homelessness is a complex problem that poses significant challenges for people, communities, and legislators. This research aims to investigate the complexities of this problem by focusing on how age and gender affect homelessness in urban areas specifically Toronto. Through the analysis of data from the Shelter System Flow dataset, which is derived from the Shelter Management Information System (SMIS) of the City of Toronto, this study seeks to offer a more comprehensive grasp of the demographic patterns within the homeless population.
 
-In the following sections, we will present a detailed analysis of the Toronto Shelter System Flow dataset, exploring the patterns and trends of homelessness among different age and gender groups. The paper will then discuss the implications of these findings, considering both the broader social context and the specific realities of homelessness in Toronto. Finally, we will address the limitations of our study and suggest directions for future research, emphasizing the importance of continuous and nuanced exploration of this critical social issue.
+Toronto's approach to homelessness, characterized by a range of services including emergency shelters and respites, reflects the city's commitment to addressing this complex social problem. However, the persistence and evolving nature of homelessness necessitate a continuous examination of the underlying factors. The aim of this research is to determine how age and gender affect homelessness in Toronto, providing a data-driven perspective on the distribution and dynamics of homelessness among different demographic groups.
+
+In the following sections, I will present a detailed analysis of the Toronto Shelter System Flow dataset, exploring the patterns and trends of homelessness among different age and gender groups. The paper will then discuss the implications of these findings, considering both the broader social context and the specific realities of homelessness in Toronto. Finally, we will address the limitations of our study and suggest directions for future research, emphasizing the importance of continuous and nuanced exploration of this critical social issue.
 
 # Data
 
@@ -22,22 +24,25 @@ The data utilized in this study is sourced from the City of Toronto's Shelter Ma
 
 # 2.1 Toronto Shelter System Flow
 
-The "Toronto Shelter System Flow" dataset provides monthly data on individuals experiencing homelessness, including those who are entering and leaving the shelter system. It records various parameters such as the number of unique individuals who have accessed the shelter system at least once in the past three months, their demographic information, and their current status in the system (e.g., actively homeless, moved to housing, became inactive). 
+The "Toronto Shelter System Flow" dataset provides monthly data on individuals experiencing homelessness, including those who are entering and leaving the shelter system. It records various parameters such as the number of unique individuals who have accessed the shelter system at least once in the past three months, their demographic information, and their current status in the system (e.g., actively homeless, moved to housing, became inactive).
 
 The dataset categorizes individuals into different groups based on criteria such as chronic homelessness, family status, age (including youth), and refugee status. It also includes specific definitions for each category. For instance, "chronic homelessness" is defined according to federal guidelines, and Indigenous identity is determined based on self-identification during intake.
 
-2.2 Limitations and Context
+## 2.2 Limitations and Context
 
 While the dataset provides extensive information, it has some limitations. It only includes data on individuals who have used overnight services and does not account for those exclusively sleeping outdoors or utilizing non-city-funded homelessness services. Additionally, sites not using SMIS and funded by other government levels are excluded. This limitation is crucial to acknowledge as it impacts the comprehensiveness of the dataset.
 
+## 2.3 Ethical and Statistical Considerations
 
-2.3 Ethical and Statistical Considerations
+The dataset raises important ethical considerations, particularly regarding the privacy and confidentiality of individuals experiencing homelessness. The City of Toronto ensures that data collection and reporting comply with relevant privacy laws and ethical standards. From a statistical standpoint, the dataset provides a great source for analysis, but the previously mentioned limitations must be taken into account when drawing conclusions or generalizing findings.
 
-The dataset raises important ethical considerations, particularly regarding the privacy and confidentiality of individuals experiencing homelessness. The City of Toronto ensures that data collection and reporting comply with relevant privacy laws and ethical standards. From a statistical standpoint, the dataset provides a rich source for analysis, but the aforementioned limitations must be taken into account when drawing conclusions or generalizing findings.
-
-2.4 Data Accessibility and Quality
+## 2.4 Data Accessibility and Quality
 
 The dataset scores high in terms of freshness, metadata, accessibility, completeness, and usability. This indicates that the data is up-to-date, well-described, easily accessible for different users, and has no major issues regarding missing data or usability. Such attributes enhance the reliability and relevance of the dataset for research purposes.
+
+# 3 Results
+
+The following bar graphs show the distribution of the actively homeless populations by age and gender. It also showcases two tibbles which have the proportion of the actively homeless population by age and gender.
 
 ```{r echo=FALSE, message=FALSE}
 
@@ -87,7 +92,6 @@ gender_data <- data %>%
   ) %>%
   pivot_longer(cols = everything(), names_to = "Gender", values_to = "Count")
 
-# Create the bar graph
 ggplot(gender_data, aes(x = Gender, y = Count, fill = Gender)) +
   geom_bar(stat = "identity") +
   labs(title = "Number of Actively Homeless People by Gender",
@@ -123,8 +127,8 @@ print(gender_data)
 
 # References
 
-List of references.
+This research was conducted using [@R], [@tidyverse] and [@opendatatoronto]
 
 # Acknowledgments
 
-Find more details on GitHub repo: [GitHub Link](https://github.com/MariaMangru/Shelter-System-Flow-Analysis)
+Find more details here: [Age and Gender Analysis in Shelter System Flow](https://github.com/MariaMangru/Shelter-System-Flow-Analysis)
